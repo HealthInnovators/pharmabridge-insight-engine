@@ -45,8 +45,8 @@ export const agentTools = [
 
 export function executeToolCall(toolName: string, args: any): any {
   const q = (args.query || args.molecule || "").toLowerCase();
-  if (toolName === "query_iqvia_api") return mockData.iqvia[q] || { error: "Not found" };
-  if (toolName === "query_patent_database") return mockData.patents[q] || [];
-  if (toolName === "query_clinical_trials") return mockData.trials[q] || [];
+  if (toolName === "query_iqvia_api") return (mockData.iqvia as any)[q] || { error: "Not found" };
+  if (toolName === "query_patent_database") return (mockData.patents as any)[q] || [];
+  if (toolName === "query_clinical_trials") return (mockData.trials as any)[q] || [];
   return { info: "Mock data for " + toolName };
 }
