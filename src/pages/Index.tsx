@@ -9,7 +9,7 @@ import { ConversationList } from "@/components/ConversationList";
 import { useToast } from "@/hooks/use-toast";
 import { Send, LogOut, Menu, X } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 interface Message {
   id: string;
@@ -214,11 +214,14 @@ const Index = () => {
       <div className="flex-1 flex flex-col">
         <div className="h-14 border-b flex items-center px-4 justify-between">
           <div className="flex items-center gap-2">
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsSidebarOpen(true)}>
-                <Menu className="w-5 h-5" />
-              </Button>
-            </SheetTrigger>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden" 
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu className="w-5 h-5" />
+            </Button>
             <h2 className="text-sm font-medium text-muted-foreground">
               Drug Repurposing Intelligence
             </h2>
