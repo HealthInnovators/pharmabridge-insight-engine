@@ -145,6 +145,7 @@ const Index = () => {
         .eq("conversation_id", conversationId)
         .order("created_at", { ascending: true });
 
+      console.log("Frontend - Updated Messages after LLM response:", updatedMessages);
       setMessages((updatedMessages || []) as Message[]);
 
       if (response.data?.agentsUsed) {

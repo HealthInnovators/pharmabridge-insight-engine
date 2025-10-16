@@ -47,6 +47,7 @@ const Auth = () => {
             data: {
               full_name: fullName,
             },
+            shouldCreateUser: true,
           },
         });
 
