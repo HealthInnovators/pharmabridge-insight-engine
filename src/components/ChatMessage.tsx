@@ -10,6 +10,7 @@ interface ChatMessageProps {
 
 export const ChatMessage = ({ role, content, metadata }: ChatMessageProps) => {
   const isUser = role === "user";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL as string | undefined;
 
   return (
     <div className={cn("flex gap-3 mb-4 animate-fade-in", isUser && "justify-end")}>
@@ -30,6 +31,18 @@ export const ChatMessage = ({ role, content, metadata }: ChatMessageProps) => {
             <p className="text-xs text-muted-foreground">
               Consulted: {metadata.agents.join(", ")}
             </p>
+          </div>
+        )}
+        {metadata?.report_id && backendUrl && (
+          <div className="mt-2">
+            <a
+              href={`${backendUrl}/api/reports/${metadata.report_id}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs underline text-primary"
+            >
+              Download report (PDF)
+            </a>
           </div>
         )}
       </Card>

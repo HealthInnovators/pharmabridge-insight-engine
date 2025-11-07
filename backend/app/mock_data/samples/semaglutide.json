@@ -1,0 +1,90 @@
+{
+  "publications": [
+    {
+      "title": "Once-Weekly Semaglutide in Adults with Overweight or Obesity",
+      "journal": "New England Journal of Medicine",
+      "year": 2023,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183",
+      "authors": ["Wilding, J.P.H.", "Batterham, R.L.", "Davies, M.", "et al."],
+      "abstract": "In this double-blind trial, participants with overweight or obesity were randomly assigned to receive once-weekly subcutaneous semaglutide or placebo for 68 weeks. The mean change in body weight from baseline to week 68 was -14.9% in the semaglutide group versus -2.4% in the placebo group.",
+      "key_findings": [
+        "Mean weight loss of 14.9% of body weight at 68 weeks",
+        "73% of participants achieved ≥10% weight loss vs 27% with placebo",
+        "Significant improvements in cardiometabolic risk factors"
+      ]
+    },
+    {
+      "title": "Semaglutide 2.4 mg for the Treatment of Obesity: Key Elements of the STEP Trials 1 to 5",
+      "journal": "Nature Reviews Endocrinology",
+      "year": 2024,
+      "url": "https://www.nature.com/articles/s41574-023-00826-3",
+      "authors": ["Kushner, R.F.", "Calanna, S.", "Davies, M.", "et al."],
+      "abstract": "This review summarizes the STEP clinical trial program investigating semaglutide 2.4 mg for chronic weight management, including its efficacy, safety, and implications for clinical practice.",
+      "key_findings": [
+        "Consistent weight loss across all STEP trials (range: 15-18% of body weight)",
+        "Improvements in cardiometabolic risk factors and physical functioning",
+        "Generally well-tolerated with predominantly gastrointestinal side effects"
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "nct_id": "NCT04566524",
+      "title": "A Research Study to See How Semaglutide Works in People With Non-alcoholic Steatohepatitis (NASH) (LEAN)",
+      "status": "Recruiting",
+      "phase": "Phase 2",
+      "completion_date": "2026-06-30",
+      "sponsor": "Novo Nordisk A/S",
+      "enrollment": 200,
+      "endpoints": [
+        "Change in liver fat content (MRI-PDFF)",
+        "Resolution of NASH with no worsening of fibrosis",
+        "Change in liver enzymes and biomarkers"
+      ]
+    },
+    {
+      "nct_id": "NCT04855081",
+      "title": "A Research Study to See How Well Semaglutide Works in People With Type 2 Diabetes and Chronic Kidney Disease (FLOW)",
+      "status": "Active, not recruiting",
+      "phase": "Phase 3",
+      "completion_date": "2024-12-31",
+      "sponsor": "Novo Nordisk A/S",
+      "enrollment": 3534,
+      "endpoints": [
+        "Time to first occurrence of persistent ≥50% reduction in eGFR, onset of persistent eGFR <15, initiation of chronic kidney replacement therapy, or death from kidney disease",
+        "Time to first occurrence of major cardiovascular events (MACE)",
+        "Change in UACR (urine albumin-to-creatinine ratio)"
+      ]
+    }
+  ],
+  "patents": [
+    {
+      "patent_number": "US10251836B2",
+      "title": "Acylated GLP-1 Compounds",
+      "filing_date": "2010-05-15",
+      "expiry": "2030-05-15",
+      "status": "Active",
+      "assignee": "Novo Nordisk A/S",
+      "abstract": "The present invention relates to GLP-1 compounds which are acylated with a hydrophilic substituent. The compounds may be used for the treatment of various diseases, such as diabetes and obesity.",
+      "claims": [
+        "A GLP-1 compound comprising an acyl group attached to a lysine residue at position 26 or 34 of the GLP-1(7-37) peptide sequence.",
+        "The GLP-1 compound of claim 1, wherein the acyl group is a C16-C22 fatty diacid.",
+        "A pharmaceutical composition comprising the GLP-1 compound of claim 1 and a pharmaceutically acceptable carrier."
+      ]
+    },
+    {
+      "patent_number": "US10722571B2",
+      "title": "Semaglutide Formulations",
+      "filing_date": "2015-03-10",
+      "expiry": "2035-03-10",
+      "status": "Active",
+      "assignee": "Novo Nordisk A/S",
+      "abstract": "The present invention relates to stable pharmaceutical formulations comprising GLP-1 compounds, in particular semaglutide, and methods for their preparation and use in the treatment of diabetes and obesity.",
+      "claims": [
+        "A pharmaceutical formulation comprising semaglutide, a buffer, and a tonicity modifier, wherein the formulation has a pH in the range of 7.0 to 8.5.",
+        "The formulation of claim 1, further comprising a preservative selected from the group consisting of phenol, m-cresol, and benzyl alcohol.",
+        "A prefilled injection pen comprising the formulation of claim 1."
+      ]
+    }
+  ]
+}

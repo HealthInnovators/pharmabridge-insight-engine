@@ -128,29 +128,87 @@ const Index = () => {
         .order("created_at", { ascending: true });
 
       setMessages((allMessages || []) as Message[]);
+      const backendUrl = import.meta.env.VITE_BACKEND_URL as string | undefined;
+      let agentsUsed: string[] | undefined;
+      let reportId: string | undefined;
 
-      const response = await supabase.functions.invoke("chat", {
-        body: {
-          conversationId,
-          message: userMessage,
-          history: allMessages || [],
-        },
-      });
+      if (backendUrl) {
+        const resp = await fetch(`${backendUrl}/api/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            conversationId,
+            message: userMessage,
+            history: (allMessages || []).map((m) => ({ id: m.id, role: m.role, content: m.content, metadata: m.metadata || null })),
+          }),
+        });
 
-      if (response.error) throw response.error;
+        if (!resp.ok) {
+          const t = await resp.text();
+          throw new Error(`Backend error: ${t}`);
+        }
+        const data = await resp.json();
+        const assistantMessage = data.content as string;
+        agentsUsed = data.agentsUsed as string[] | undefined;
+        reportId = data.report_id as string | undefined;
 
+        const { error: assistantMsgError } = await supabase
+          .from("messages")
+          .insert({
+            conversation_id: conversationId,
+            role: "assistant",
+            content: assistantMessage,
+            metadata: { agents: agentsUsed, report_id: reportId },
+          });
+        if (assistantMsgError) throw assistantMsgError;
+      } else {
+        // Fallback: Call Groq API directly
+        const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`
+          },
+          body: JSON.stringify({
+            model: 'llama-3.3-70b-versatile',
+            messages: [
+              ...(allMessages?.map(msg => ({
+                role: msg.role,
+                content: msg.content
+              })) || []),
+              { role: 'user', content: userMessage }
+            ],
+            temperature: 0.7,
+            max_tokens: 2000
+          })
+        });
+
+        if (!groqResponse.ok) {
+          const error = await groqResponse.text();
+          throw new Error(`Groq API error: ${error}`);
+        }
+        const groqData = await groqResponse.json();
+        const assistantMessage = groqData.choices[0].message.content;
+
+        const { error: assistantMsgError } = await supabase
+          .from("messages")
+          .insert({
+            conversation_id: conversationId,
+            role: "assistant",
+            content: assistantMessage,
+          });
+        if (assistantMsgError) throw assistantMsgError;
+      }
+
+      // Refresh messages after either path
       const { data: updatedMessages } = await supabase
         .from("messages")
         .select("*")
         .eq("conversation_id", conversationId)
         .order("created_at", { ascending: true });
 
-      console.log("Frontend - Updated Messages after LLM response:", updatedMessages);
       setMessages((updatedMessages || []) as Message[]);
-
-      if (response.data?.agentsUsed) {
-        setCompletedAgents(response.data.agentsUsed);
-      }
+      if (agentsUsed) setCompletedAgents(agentsUsed);
     } catch (error: any) {
       console.error("Error:", error);
       toast({

@@ -1,0 +1,95 @@
+{
+  "publications": [
+    {
+      "title": "Donanemab in Early Alzheimer's Disease",
+      "journal": "New England Journal of Medicine",
+      "year": 2021,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2100708",
+      "authors": ["Mintun, M.A.", "Lo, A.C.", "Duggan Evans, C.", "Wessels, A.M.", "Ardayfio, P.A.", "Andersen, S.W.", "Shcherbinin, S.", "Sparks, J.D.", "Wessels, J.", "Snyder, P.J."],
+      "abstract": "In this phase 2 trial, we assigned 257 patients with early symptomatic Alzheimer's disease to receive donanemab or placebo. The primary outcome was the change from baseline in the score on the Integrated Alzheimer's Disease Rating Scale (iADRS; range, 0 to 144, with lower scores indicating greater cognitive and functional impairment) at 76 weeks. Secondary outcomes included changes in amyloid and tau burden on positron-emission tomography and other clinical scales.",
+      "key_findings": [
+        "Donanemab resulted in a better composite score for cognition and for the ability to perform activities of daily living than placebo at 76 weeks (difference, −0.80; 95% CI, −1.27 to −0.33; P = 0.001).",
+        "The rate of amyloid-related imaging abnormalities with edema was 26.7% in the donanemab group and 0.8% in the placebo group.",
+        "Donanemab resulted in significant reductions in amyloid plaque and tau pathology as measured by PET imaging."
+      ]
+    },
+    {
+      "title": "Donanemab for Alzheimer's Disease: A Systematic Review of Clinical Trials",
+      "journal": "Journal of Alzheimer's Disease",
+      "year": 2023,
+      "url": "https://content.iospress.com/articles/journal-of-alzheimers-disease/jad230175",
+      "authors": ["Cummings, J.", "Aisen, P.S.", "DuBois, B.", "Frigerio, S.", "Barrowdale, A.", "Pieper, A."],
+      "abstract": "This systematic review evaluates the clinical trial data for donanemab, an anti-amyloid monoclonal antibody, in the treatment of early Alzheimer's disease. The analysis includes data from phase 1, 2, and 3 trials, focusing on efficacy, safety, and biomarker outcomes.",
+      "key_findings": [
+        "Donanemab demonstrates significant amyloid plaque reduction in a dose-dependent manner.",
+        "Clinical benefits were most pronounced in patients with low/medium tau pathology at baseline.",
+        "The safety profile is consistent with amyloid-related imaging abnormalities (ARIA) seen with other anti-amyloid antibodies."
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "nct_id": "NCT03367403",
+      "title": "TRAILBLAZER-ALZ: A Study of Donanemab in Early Symptomatic Alzheimer's Disease",
+      "status": "Active, not recruiting",
+      "phase": "Phase 3",
+      "completion_date": "2024-12-31",
+      "sponsor": "Eli Lilly and Company",
+      "enrollment": 1800,
+      "endpoints": [
+        "Change from baseline in the Integrated Alzheimer's Disease Rating Scale (iADRS) at 76 weeks",
+        "Change from baseline in Clinical Dementia Rating Scale-Sum of Boxes (CDR-SB)",
+        "Change from baseline in amyloid and tau PET imaging"
+      ],
+      "results": {
+        "primary_endpoint_met": "Yes (topline results announced)",
+        "key_findings": "Donanemab significantly slowed cognitive and functional decline in early symptomatic Alzheimer's disease patients.",
+        "safety": "ARIA-E (amyloid-related imaging abnormalities with edema) observed in approximately 24% of treated participants."
+      }
+    },
+    {
+      "nct_id": "NCT04437511",
+      "title": "TRAILBLAZER-ALZ 2: A Study of Donanemab in Early Symptomatic Alzheimer's Disease",
+      "status": "Active, not recruiting",
+      "phase": "Phase 3",
+      "completion_date": "2024-06-30",
+      "sponsor": "Eli Lilly and Company",
+      "enrollment": 1500,
+      "endpoints": [
+        "Change from baseline in the Integrated Alzheimer's Disease Rating Scale (iADRS) at 76 weeks",
+        "Change from baseline in amyloid PET standardized uptake value ratio (SUVr)",
+        "Incidence and severity of treatment-emergent adverse events"
+      ]
+    }
+  ],
+  "patents": [
+    {
+      "patent_number": "US9902769B2",
+      "title": "Humanized Antibodies that Recognize Amyloid-Beta Peptide",
+      "filing_date": "2013-03-15",
+      "expiry": "2033-03-15",
+      "status": "Active",
+      "assignee": "Eli Lilly and Company",
+      "abstract": "The present invention relates to humanized antibodies that specifically bind to amyloid-beta peptide (Aβ), particularly the pyroglutamate form of Aβ (AβpE3-42), and their use in the treatment of Alzheimer's disease and other amyloid-related disorders.",
+      "claims": [
+        "An isolated humanized antibody or antigen-binding fragment thereof that specifically binds to an epitope within amino acids 3-7 of amyloid-β (Aβ) peptide, wherein the antibody or fragment comprises: (a) a heavy chain variable region comprising the CDR sequences of SEQ ID NOs: 1, 2, and 3; and (b) a light chain variable region comprising the CDR sequences of SEQ ID NOs: 4, 5, and 6.",
+        "The antibody or fragment of claim 1, wherein the antibody is a monoclonal antibody.",
+        "A pharmaceutical composition comprising the antibody or fragment of claim 1 and a pharmaceutically acceptable carrier."
+      ]
+    },
+    {
+      "patent_number": "US10597462B2",
+      "title": "Methods of Treating Alzheimer's Disease with Anti-Amyloid Antibodies",
+      "filing_date": "2017-05-12",
+      "expiry": "2037-05-12",
+      "status": "Active",
+      "assignee": "Eli Lilly and Company",
+      "abstract": "The present invention provides methods for treating Alzheimer's disease using anti-amyloid antibodies, particularly donanemab, including specific dosing regimens and patient selection criteria based on biomarker status.",
+      "claims": [
+        "A method of treating Alzheimer's disease in a patient in need thereof, comprising: (a) identifying a patient having early symptomatic Alzheimer's disease with confirmed amyloid pathology; and (b) administering to the patient a therapeutically effective amount of an anti-amyloid antibody that specifically binds to the N-terminal pyroglutamate form of Aβ (AβpE3-42).",
+        "The method of claim 1, wherein the anti-amyloid antibody is donanemab.",
+        "The method of claim 1, wherein the antibody is administered at a dose of 700 mg or 1400 mg intravenously every 4 weeks."
+      ]
+    }
+  ]
+}

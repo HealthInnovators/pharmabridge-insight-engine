@@ -1,0 +1,95 @@
+{
+  "publications": [
+    {
+      "title": "Tirzepatide Once Weekly for the Treatment of Obesity",
+      "journal": "New England Journal of Medicine",
+      "year": 2022,
+      "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2206038",
+      "authors": ["Jastreboff, A.M.", "Aronne, L.J.", "Ahmad, N.N."],
+      "abstract": "In this phase 3, double-blind, randomized, controlled trial, adults with obesity or overweight were assigned to receive once-weekly subcutaneous tirzepatide (5 mg, 10 mg, or 15 mg) or placebo for 72 weeks. The mean percentage weight reduction was 15.0% with 5-mg weekly doses of tirzepatide, 19.5% with 10-mg doses, and 20.9% with 15-mg doses, as compared with 3.1% with placebo.",
+      "key_findings": [
+        "Mean weight reduction of 20.9% with 15 mg dose at 72 weeks",
+        "91% of participants achieved ≥5% weight loss with 15 mg dose vs 35% with placebo",
+        "Significant improvements in cardiometabolic parameters and physical functioning"
+      ]
+    },
+    {
+      "title": "Dual GIP and GLP-1 Receptor Agonist Tirzepatide Improves Beta-cell Function and Insulin Sensitivity in Type 2 Diabetes",
+      "journal": "Journal of Clinical Endocrinology & Metabolism",
+      "year": 2023,
+      "url": "https://academic.oup.com/jcem/article/108/2/301/6674223",
+      "authors": ["Frias, J.P.", "Davies, M.J.", "Rosenstock, J."],
+      "abstract": "This study evaluated the effects of tirzepatide on beta-cell function and insulin sensitivity in patients with type 2 diabetes. The results demonstrate that tirzepatide significantly improves both first- and second-phase insulin secretion and enhances insulin sensitivity in a dose-dependent manner.",
+      "key_findings": [
+        "Dose-dependent improvements in beta-cell function (up to 2.8-fold increase)",
+        "Significant enhancement of insulin sensitivity (up to 56% improvement)",
+        "Greater reductions in HbA1c and body weight compared to selective GLP-1 RAs"
+      ]
+    }
+  ],
+  "trials": [
+    {
+      "nct_id": "NCT04184622",
+      "title": "A Study of Tirzepatide (LY3298176) in Participants With Type 2 Diabetes on Metformin With or Without SGLT2 Inhibitor (SURPASS-2)",
+      "status": "Completed",
+      "phase": "Phase 3",
+      "completion_date": "2021-06-30",
+      "sponsor": "Eli Lilly and Company",
+      "enrollment": 1879,
+      "endpoints": [
+        "Change from baseline in HbA1c at 40 weeks",
+        "Change from baseline in body weight at 40 weeks",
+        "Proportion of participants achieving HbA1c <7.0%"
+      ],
+      "results": {
+        "hba1c_reduction": "-2.01% (5 mg), -2.24% (10 mg), -2.30% (15 mg) vs -1.86% (semaglutide 1 mg)",
+        "weight_loss": "-7.6 kg (5 mg), -9.3 kg (10 mg), -11.2 kg (15 mg) vs -5.7 kg (semaglutide 1 mg)",
+        "hba1c_goal_achievement": "92% (15 mg) vs 81% (semaglutide 1 mg) achieving <7.0%"
+      }
+    },
+    {
+      "nct_id": "NCT04881760",
+      "title": "A Study of Tirzepatide (LY3298176) in Participants With Obesity or Overweight for the Maintenance of Body Weight Reduction (SURMOUNT-4)",
+      "status": "Recruiting",
+      "phase": "Phase 3",
+      "completion_date": "2025-12-31",
+      "sponsor": "Eli Lilly and Company",
+      "enrollment": 2000,
+      "endpoints": [
+        "Percent change in body weight from randomization to week 88",
+        "Proportion of participants achieving ≥5%, ≥10%, ≥15%, and ≥20% weight loss",
+        "Change in waist circumference and body mass index (BMI)"
+      ]
+    }
+  ],
+  "patents": [
+    {
+      "patent_number": "US10253098B2",
+      "title": "GLP-1/Glucagon Receptor Agonists",
+      "filing_date": "2016-09-01",
+      "expiry": "2036-09-01",
+      "status": "Active",
+      "assignee": "Eli Lilly and Company",
+      "abstract": "The present invention relates to dual GLP-1/glucagon receptor agonists, particularly tirzepatide, and their use in the treatment of metabolic disorders including type 2 diabetes and obesity.",
+      "claims": [
+        "A dual GLP-1/glucagon receptor agonist comprising the amino acid sequence H-Xaa8-EGTFTSDYSIYLDKQAAXaa21FIXWLXaa28KXaa30PSSGAPPPS-NH2, wherein Xaa8 is Aib, Xaa21 is E, Xaa28 is K, and Xaa30 is R or K.",
+        "The agonist of claim 1, wherein the C-terminus is modified by attachment of a C16-C22 fatty diacid.",
+        "A pharmaceutical composition comprising the agonist of claim 1 and a pharmaceutically acceptable carrier."
+      ]
+    },
+    {
+      "patent_number": "US10851142B2",
+      "title": "Methods for Treating Obesity with GIP/GLP-1 Receptor Co-Agonists",
+      "filing_date": "2018-12-14",
+      "expiry": "2038-12-14",
+      "status": "Active",
+      "assignee": "Eli Lilly and Company",
+      "abstract": "The present invention provides methods for treating obesity and related conditions using GIP/GLP-1 receptor co-agonists, particularly tirzepatide, in specific dosing regimens.",
+      "claims": [
+        "A method for treating obesity in a patient in need thereof, comprising administering to the patient a therapeutically effective amount of a GIP/GLP-1 receptor co-agonist in a dose escalation regimen comprising: (a) 2.5 mg once weekly for 4 weeks, followed by (b) 5 mg once weekly for at least 4 weeks.",
+        "The method of claim 1, wherein the GIP/GLP-1 receptor co-agonist is tirzepatide.",
+        "The method of claim 1, further comprising administering one or more additional anti-obesity agents selected from the group consisting of orlistat, phentermine-topiramate, naltrexone-bupropion, and liraglutide."
+      ]
+    }
+  ]
+}
