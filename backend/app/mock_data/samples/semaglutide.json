@@ -5,7 +5,7 @@
       "journal": "New England Journal of Medicine",
       "year": 2023,
       "url": "https://www.nejm.org/doi/full/10.1056/NEJMoa2032183",
-      "authors": ["Wilding, J.P.H.", "Batterham, R.L.", "Davies, M.", "et al."],
+      "authors": ["Wilding, J.P.H.", "Batterham, R.L.", "Davies, M."],
       "abstract": "In this double-blind trial, participants with overweight or obesity were randomly assigned to receive once-weekly subcutaneous semaglutide or placebo for 68 weeks. The mean change in body weight from baseline to week 68 was -14.9% in the semaglutide group versus -2.4% in the placebo group.",
       "key_findings": [
         "Mean weight loss of 14.9% of body weight at 68 weeks",
@@ -18,7 +18,7 @@
       "journal": "Nature Reviews Endocrinology",
       "year": 2024,
       "url": "https://www.nature.com/articles/s41574-023-00826-3",
-      "authors": ["Kushner, R.F.", "Calanna, S.", "Davies, M.", "et al."],
+      "authors": ["Kushner, R.F.", "Calanna, S.", "Davies, M."],
       "abstract": "This review summarizes the STEP clinical trial program investigating semaglutide 2.4 mg for chronic weight management, including its efficacy, safety, and implications for clinical practice.",
       "key_findings": [
         "Consistent weight loss across all STEP trials (range: 15-18% of body weight)",
@@ -85,6 +85,67 @@
         "The formulation of claim 1, further comprising a preservative selected from the group consisting of phenol, m-cresol, and benzyl alcohol.",
         "A prefilled injection pen comprising the formulation of claim 1."
       ]
+    }
+  ],
+  "iqvia": {
+    "therapy_area": "Metabolic (Obesity/Type 2 Diabetes)",
+    "market_size": {"2022": 18.1, "2023": 22.4, "2024": 27.9},
+    "cagr": 22.5,
+    "burden_index": 0.75,
+    "competitors": [
+      {"name": "Semaglutide (Novo Nordisk)", "market_share": 0.42},
+      {"name": "Tirzepatide (Eli Lilly)", "market_share": 0.28},
+      {"name": "Liraglutide (Novo Nordisk)", "market_share": 0.09},
+      {"name": "Oral Agents (SGLT2/DPP4)", "market_share": 0.14}
+    ],
+    "trends": [
+      "Rapid shift from daily to weekly incretin therapies",
+      "Significant off-label interest for obesity management",
+      "Payer prior authorization tightening in select markets"
+    ]
+  },
+  "exim": {
+    "api_name": "Semaglutide API",
+    "import_dependency": 0.68,
+    "trade_volumes": [
+      {"year": 2021, "volume_kg": 420},
+      {"year": 2022, "volume_kg": 610},
+      {"year": 2023, "volume_kg": 790}
+    ],
+    "top_exporters": [
+      {"country": "China", "share": "41%"},
+      {"country": "India", "share": "32%"},
+      {"country": "EU", "share": "18%"}
+    ],
+    "notes": "Formulation exports rising in LATAM and SEA; cold chain constraints drive CMO concentration"
+  },
+  "internal_docs": [
+    {
+      "title": "MINS Q3 Field Insights – Obesity Clinics",
+      "summary": "Clinicians report strong adherence at 12 weeks; nausea management protocols improve persistence.",
+      "url": "internal://mins/2024-q3-obesity.pdf"
+    },
+    {
+      "title": "Strategy Deck – Incretins Competitive Positioning",
+      "summary": "Position semaglutide as metabolic platform therapy; defend share vs dual agonists with outcomes data.",
+      "url": "internal://strategy/incretins-2024.pptx"
+    }
+  ],
+  "web_intel": [
+    {
+      "source": "ESC Guidelines",
+      "url": "https://www.escardio.org/Guidelines",
+      "summary": "Updated cardiometabolic guidance emphasizes weight-centric management using GLP-1 RAs."
+    },
+    {
+      "source": "FDA Drug Safety",
+      "url": "https://www.fda.gov/drugs/drug-safety-and-availability",
+      "summary": "No new GLP-1 RA safety communications; monitoring ongoing for pancreatitis and gallbladder events."
+    },
+    {
+      "source": "Patient Forum (r/loseit)",
+      "url": "https://www.reddit.com/r/loseit",
+      "summary": "Users report plateau after 6 months; dose titration and lifestyle reinforcement recommended."
     }
   ]
 }

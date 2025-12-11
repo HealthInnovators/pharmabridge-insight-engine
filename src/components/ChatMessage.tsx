@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
-import { User, Bot } from "lucide-react";
+import { User, Bot, Download } from "lucide-react";
+import ReactMarkdown from 'react-markdown';
 
 interface ChatMessageProps {
   role: "user" | "assistant";
@@ -24,7 +25,29 @@ export const ChatMessage = ({ role, content, metadata }: ChatMessageProps) => {
         isUser ? "bg-primary text-primary-foreground" : "bg-card"
       )}>
         <div className="prose prose-sm dark:prose-invert max-w-none">
-          <p className="whitespace-pre-wrap m-0">{content}</p>
+          <ReactMarkdown
+            components={{
+              a: ({node, ...props}) => (
+                <a 
+                  {...props} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                />
+              ),
+              ul: ({node, ...props}) => (
+                <ul className="list-disc pl-5 mb-2" {...props} />
+              ),
+              li: ({node, ...props}) => (
+                <li className="mb-1" {...props} />
+              ),
+              p: ({node, ...props}) => (
+                <p className="mb-2" {...props} />
+              ),
+            }}
+          >
+            {content}
+          </ReactMarkdown>
         </div>
         {metadata?.agents && (
           <div className="mt-2 pt-2 border-t border-border/50">
@@ -34,14 +57,15 @@ export const ChatMessage = ({ role, content, metadata }: ChatMessageProps) => {
           </div>
         )}
         {metadata?.report_id && backendUrl && (
-          <div className="mt-2">
+          <div className="mt-3 pt-2 border-t border-border/50">
             <a
               href={`${backendUrl}/api/reports/${metadata.report_id}`}
               target="_blank"
               rel="noreferrer"
-              className="text-xs underline text-primary"
+              className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
             >
-              Download report (PDF)
+              <Download className="w-4 h-4" />
+              Download Full Report (PDF)
             </a>
           </div>
         )}

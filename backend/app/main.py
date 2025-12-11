@@ -44,19 +44,51 @@ class ChatResponse(BaseModel):
     report_id: Optional[str] = None
 
 
+import asyncio
+import random
+
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
+    await asyncio.sleep(0.5 + random.random())
     result = await run_workflow(query=req.message, history=req.history or [])
+
+    response_length = len(str(result))
+    base_delay = min(3.0, 0.5 + (response_length / 1000) * 0.5)
+    jitter = random.uniform(-0.3, 0.3)
+    delay = max(0.2, base_delay + jitter)
+    
+    if result:
+        await asyncio.sleep(delay)
     content = result.get("summary", "No response")
     agents_used = result.get("agents_used", [])
+    report_data = result.get("report_data", {})
+
+    print(f"Report data keys: {report_data.keys() if isinstance(report_data, dict) else 'Not a dict'}")
+    if isinstance(report_data, dict):
+        for key, value in report_data.items():
+            if isinstance(value, (list, dict)):
+                print(f"- {key}: {len(value) if hasattr(value, '__len__') else 'N/A'} items")
+            else:
+                print(f"- {key}: {value}")
 
     report_id = None
-    if result.get("report_data"):
+    if report_data:
         report_id = str(uuid.uuid4())
         pdf_path = os.path.join(os.path.dirname(__file__), "storage", "reports")
         os.makedirs(pdf_path, exist_ok=True)
         target = os.path.join(pdf_path, f"{report_id}.pdf")
-        build_report(result["report_data"], target)
+        
+        # Debug: Print the target path
+        print(f"Generating report at: {target}")
+        
+        build_report(report_data, target)
+        
+        if os.path.exists(target):
+            print(f"Successfully generated report at: {target}")
+        else:
+            print(f"Failed to generate report at: {target}")
+        
+        result["report_data"] = report_data
 
     return ChatResponse(content=content, agentsUsed=agents_used, report_id=report_id)
 

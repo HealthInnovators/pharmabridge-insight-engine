@@ -151,14 +151,25 @@ const Index = () => {
         const assistantMessage = data.content as string;
         agentsUsed = data.agentsUsed as string[] | undefined;
         reportId = data.report_id as string | undefined;
+        
+        // Format the message to include report download link if available
+        let messageContent = assistantMessage;
+        if (reportId) {
+          const reportUrl = `${import.meta.env.VITE_BACKEND_URL}/api/reports/${reportId}`;
+          messageContent += `\n\n[Download Full Report](${reportUrl})`;
+        }
 
         const { error: assistantMsgError } = await supabase
           .from("messages")
           .insert({
             conversation_id: conversationId,
             role: "assistant",
-            content: assistantMessage,
-            metadata: { agents: agentsUsed, report_id: reportId },
+            content: messageContent,
+            metadata: { 
+              agents: agentsUsed, 
+              report_id: reportId,
+              report_data: data.report_data // Store the full report data
+            },
           });
         if (assistantMsgError) throw assistantMsgError;
       } else {

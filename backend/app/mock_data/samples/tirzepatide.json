@@ -91,5 +91,60 @@
         "The method of claim 1, further comprising administering one or more additional anti-obesity agents selected from the group consisting of orlistat, phentermine-topiramate, naltrexone-bupropion, and liraglutide."
       ]
     }
+  ],
+  "iqvia": {
+    "therapy_area": "Metabolic (Obesity/Type 2 Diabetes)",
+    "market_size": {"2022": 18.1, "2023": 22.4, "2024": 27.9},
+    "cagr": 24.0,
+    "burden_index": 0.78,
+    "competitors": [
+      {"name": "Tirzepatide (Eli Lilly)", "market_share": 0.31},
+      {"name": "Semaglutide (Novo Nordisk)", "market_share": 0.45},
+      {"name": "Other GLP-1 RAs", "market_share": 0.12}
+    ],
+    "trends": [
+      "Strong payer interest due to cardiometabolic outcomes",
+      "Switching observed from GLP-1 RA monotherapy to GIP/GLP-1 co-agonist",
+      "Supply constraints easing with new manufacturing lines"
+    ]
+  },
+  "exim": {
+    "api_name": "Tirzepatide API",
+    "import_dependency": 0.55,
+    "trade_volumes": [
+      {"year": 2021, "volume_kg": 150},
+      {"year": 2022, "volume_kg": 280},
+      {"year": 2023, "volume_kg": 520}
+    ],
+    "top_exporters": [
+      {"country": "US", "share": "37%"},
+      {"country": "EU", "share": "29%"},
+      {"country": "India", "share": "21%"}
+    ],
+    "notes": "Formulation export growth led by US and EU fill-finish sites"
+  },
+  "internal_docs": [
+    {
+      "title": "Field Insights – Dose Escalation Tolerability",
+      "summary": "Gradual titration minimizes GI events; clinics adopt standardized escalation pathways.",
+      "url": "internal://mins/2024-q2-titration.pdf"
+    },
+    {
+      "title": "Strategy Memo – Dual Agonist Positioning vs GLP-1 RA",
+      "summary": "Highlight superior A1c and weight outcomes; emphasize real-world adherence benefits.",
+      "url": "internal://strategy/dual-agonist-positioning-2024.pdf"
+    }
+  ],
+  "web_intel": [
+    {
+      "source": "ADA Standards of Care 2024",
+      "url": "https://diabetes.org/standards",
+      "summary": "Guidelines incorporate incretin-based therapies prominently for weight and glycemic control."
+    },
+    {
+      "source": "Medscape News",
+      "url": "https://www.medscape.com/",
+      "summary": "Reports of improved patient satisfaction with weekly co-agonist dosing vs daily regimens."
+    }
   ]
 }

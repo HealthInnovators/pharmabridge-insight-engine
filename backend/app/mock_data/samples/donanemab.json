@@ -91,5 +91,60 @@
         "The method of claim 1, wherein the antibody is administered at a dose of 700 mg or 1400 mg intravenously every 4 weeks."
       ]
     }
+  ],
+  "iqvia": {
+    "therapy_area": "Neurodegeneration (Alzheimer's Disease)",
+    "market_size": {"2022": 2.1, "2023": 3.0, "2024": 4.2},
+    "cagr": 28.0,
+    "burden_index": 0.83,
+    "competitors": [
+      {"name": "Donanemab (Eli Lilly)", "market_share": 0.27},
+      {"name": "Lecanemab (Eisai/Biogen)", "market_share": 0.36},
+      {"name": "Aducanumab (Biogen)", "market_share": 0.09}
+    ],
+    "trends": [
+      "Shift towards earlier diagnosis and treatment in mild cognitive impairment",
+      "Payer utilization management with imaging prerequisites",
+      "Capacity constraints in infusion centers"
+    ]
+  },
+  "exim": {
+    "api_name": "Donanemab mAb",
+    "import_dependency": 0.62,
+    "trade_volumes": [
+      {"year": 2021, "volume_liters": 18},
+      {"year": 2022, "volume_liters": 31},
+      {"year": 2023, "volume_liters": 49}
+    ],
+    "top_exporters": [
+      {"country": "US", "share": "44%"},
+      {"country": "EU", "share": "33%"},
+      {"country": "Singapore", "share": "12%"}
+    ],
+    "notes": "CMO reliance for fill-finish; cold chain and imaging diagnostics create throughput bottlenecks"
+  },
+  "internal_docs": [
+    {
+      "title": "Field Report – ARIA Monitoring Protocols",
+      "summary": "Centers implement MRI monitoring at baseline, week 12, and week 24; ARIA management algorithms adopted.",
+      "url": "internal://mins/2024-q1-aria-protocols.pdf"
+    },
+    {
+      "title": "Strategy Deck – Anti-Amyloid Landscape",
+      "summary": "Differentiate on tau reduction and cognitive composite; target low/medium tau segments for maximal benefit.",
+      "url": "internal://strategy/anti-amyloid-landscape-2024.pptx"
+    }
+  ],
+  "web_intel": [
+    {
+      "source": "AAN Practice Guidelines",
+      "url": "https://www.aan.com/Guidelines",
+      "summary": "Guidance emphasizes patient selection, ARIA risk management, and shared decision-making." 
+    },
+    {
+      "source": "Alzheimer's Association",
+      "url": "https://www.alz.org/",
+      "summary": "Educational materials updated for anti-amyloid therapy access and support resources."
+    }
   ]
 }
