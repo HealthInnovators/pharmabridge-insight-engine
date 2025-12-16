@@ -1,15 +1,25 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
-from typing import List, Optional, Any, Dict
+from typing import List, Dict, Any, Optional
+import asyncio
+import random
+import logging
 import os
 import uuid
+from dotenv import load_dotenv
 
+# Load environment variables from .env file
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
+
+# Rest of your imports...
+from .services.llm import generate_chat_response, llm_provider_name
 from .orchestrator import run_workflow
 from .services.report import build_report
 
 app = FastAPI(title="PharmaBridge Agentic Backend", version="0.1.0")
+
+logger = logging.getLogger(__name__)
 
 origins = [
     "http://localhost:8080",
@@ -42,10 +52,16 @@ class ChatResponse(BaseModel):
     content: str
     agentsUsed: List[str]
     report_id: Optional[str] = None
+    report_data: Optional[Dict[str, Any]] = None
+    llm_provider: Optional[str] = None
 
-
-import asyncio
-import random
+@app.get("/debug/env")
+async def debug_env():
+    return {
+        "GROQ_API_KEY": bool(os.getenv("GROQ_API_KEY")),
+        "PUBMED_TIMEOUT_S": os.getenv("PUBMED_TIMEOUT_S"),
+        "CTGOV_TIMEOUT_S": os.getenv("CTGOV_TIMEOUT_S"),
+    }
 
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
@@ -59,17 +75,17 @@ async def chat(req: ChatRequest):
     
     if result:
         await asyncio.sleep(delay)
-    content = result.get("summary", "No response")
+
+    fallback_content = result.get("summary", "No response")
     agents_used = result.get("agents_used", [])
     report_data = result.get("report_data", {})
 
-    print(f"Report data keys: {report_data.keys() if isinstance(report_data, dict) else 'Not a dict'}")
-    if isinstance(report_data, dict):
-        for key, value in report_data.items():
-            if isinstance(value, (list, dict)):
-                print(f"- {key}: {len(value) if hasattr(value, '__len__') else 'N/A'} items")
-            else:
-                print(f"- {key}: {value}")
+    content = await generate_chat_response(
+        query=req.message,
+        history=[m.model_dump() for m in (req.history or [])],
+        report_data=report_data if isinstance(report_data, dict) else {},
+        fallback_text=fallback_content,
+    )
 
     report_id = None
     if report_data:
@@ -77,20 +93,19 @@ async def chat(req: ChatRequest):
         pdf_path = os.path.join(os.path.dirname(__file__), "storage", "reports")
         os.makedirs(pdf_path, exist_ok=True)
         target = os.path.join(pdf_path, f"{report_id}.pdf")
-        
-        # Debug: Print the target path
-        print(f"Generating report at: {target}")
-        
-        build_report(report_data, target)
-        
-        if os.path.exists(target):
-            print(f"Successfully generated report at: {target}")
-        else:
-            print(f"Failed to generate report at: {target}")
-        
-        result["report_data"] = report_data
 
-    return ChatResponse(content=content, agentsUsed=agents_used, report_id=report_id)
+        build_report(report_data, target)
+
+        if not os.path.exists(target):
+            logger.warning("Report build did not create expected PDF at %s", target)
+
+    return ChatResponse(
+        content=content,
+        agentsUsed=agents_used,
+        report_id=report_id,
+        report_data=report_data if isinstance(report_data, dict) else None,
+        llm_provider=llm_provider_name(),
+    )
 
 
 @app.get("/api/reports/{report_id}")
