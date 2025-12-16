@@ -1,10 +1,12 @@
 from typing import Dict, Any, List, Optional
+from datetime import datetime
 import os
 import re
 
 import httpx
 
 from ..mock_data.loader import load_mock
+from ..mock_data.loader import detect_key
 
 
 def _extract_year(text: str) -> Optional[int]:
@@ -71,13 +73,25 @@ def _pubmed_fetch(query: str, retmax: int = 5) -> List[Dict[str, Any]]:
 
 def web_search_agent(query: str) -> Dict[str, Any]:
     retmax = int(os.getenv("PUBMED_RETMAX", "5"))
+    key = detect_key(query)
+    term = key if key != "generic" else query
     try:
-        pubs = _pubmed_fetch(query, retmax=retmax)
+        pubs = _pubmed_fetch(term, retmax=retmax)
         if pubs:
-            return {"publications": pubs}
+            return {
+                "publications": pubs,
+                "_meta": {
+                    "source": "pubmed_api",
+                    "fetched_at": datetime.utcnow().isoformat() + "Z",
+                    "query_term": term,
+                },
+            }
     except Exception:
         pass
 
     data = load_mock(query)
     pubs = data.get("publications", [])
-    return {"publications": pubs}
+    return {
+        "publications": pubs,
+        "_meta": {"source": "mock", "fetched_at": datetime.utcnow().isoformat() + "Z", "query_term": term},
+    }

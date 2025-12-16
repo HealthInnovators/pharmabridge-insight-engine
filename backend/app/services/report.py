@@ -60,6 +60,28 @@ def build_report(data: Dict[str, Any], path: str):
         query = data.get('query', 'No query provided')
         y = draw_heading("Query", y, 2)
         y = draw_lines([query, ""], y, 0)
+
+        sources = data.get("sources", {})
+        if isinstance(sources, dict) and sources:
+            y = draw_heading("Data Sources", y, 2)
+            lines = []
+            for label, key in [
+                ("Publications", "publications"),
+                ("Clinical Trials", "trials"),
+                ("Patents", "patents"),
+                ("Market (IQVIA)", "iqvia"),
+                ("EXIM", "exim"),
+                ("Internal Knowledge", "internal_docs"),
+                ("Web Intelligence", "web_intel"),
+            ]:
+                meta = sources.get(key)
+                if isinstance(meta, dict) and meta.get("source"):
+                    lines.append(f"{label}: {meta.get('source')}")
+            generated_at = sources.get("generated_at")
+            if isinstance(generated_at, str) and generated_at:
+                lines.append(f"Generated at: {generated_at}")
+            if lines:
+                y = draw_lines(lines + [""], y, 1)
         
         # Helper function to safely get list data
         def safe_get_list(data, key):

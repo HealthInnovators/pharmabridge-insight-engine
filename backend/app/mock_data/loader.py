@@ -8,6 +8,7 @@ KNOWN_KEYS = {
     "semaglutide": ["semaglutide", "ozempic", "wegovy"],
     "tirzepatide": ["tirzepatide", "mounjaro", "zepbound"],
     "donanemab": ["donanemab"],
+    "sildenafil": ["sildenafil", "viagra", "revatio"],
 }
 
 
@@ -17,14 +18,21 @@ def detect_key(query: str) -> str:
         for alias in aliases:
             if alias in q:
                 return key
-    # default to semaglutide for demo richness
-    return "semaglutide"
+    return "generic"
 
 
 def load_mock(query: str) -> Dict[str, Any]:
     key = detect_key(query)
     path = os.path.join(DATA_DIR, f"{key}.json")
     if not os.path.exists(path):
-        return {"publications": [], "trials": [], "patents": []}
+        return {
+            "publications": [],
+            "trials": [],
+            "patents": [],
+            "iqvia": {},
+            "exim": {},
+            "internal_docs": [],
+            "web_intel": [],
+        }
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)

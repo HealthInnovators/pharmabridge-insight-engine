@@ -1,9 +1,11 @@
 from typing import Dict, Any, List, Optional
+from datetime import datetime
 import os
 
 import httpx
 
 from ..mock_data.loader import load_mock
+from ..mock_data.loader import detect_key
 
 
 def _first_str(v: Any) -> Optional[str]:
@@ -83,13 +85,25 @@ def _ctgov_fetch(query: str, page_size: int = 5) -> List[Dict[str, Any]]:
 
 def trials_agent(query: str) -> Dict[str, Any]:
     page_size = int(os.getenv("CTGOV_PAGE_SIZE", "5"))
+    key = detect_key(query)
+    term = key if key != "generic" else query
     try:
-        trials = _ctgov_fetch(query, page_size=page_size)
+        trials = _ctgov_fetch(term, page_size=page_size)
         if trials:
-            return {"trials": trials}
+            return {
+                "trials": trials,
+                "_meta": {
+                    "source": "clinicaltrials_gov_api",
+                    "fetched_at": datetime.utcnow().isoformat() + "Z",
+                    "query_term": term,
+                },
+            }
     except Exception:
         pass
 
     data = load_mock(query)
     trials = data.get("trials", [])
-    return {"trials": trials}
+    return {
+        "trials": trials,
+        "_meta": {"source": "mock", "fetched_at": datetime.utcnow().isoformat() + "Z", "query_term": term},
+    }

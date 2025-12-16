@@ -40,6 +40,9 @@ async def generate_chat_response(
         "You MUST only use the provided structured data (report_data) as your source of truth. "
         "If a detail is missing from report_data, explicitly say it is not available. "
         "Do NOT fabricate citations, numbers, trial IDs, PMIDs, or claims. "
+        "Always start your response with a 'Data Sources' section derived from report_data.sources. "
+        "If report_data.sources indicates a section is 'mock', label it as demo/placeholder data. "
+        "If the user's query is about a specific molecule/indication but report_data content appears to be about a different topic, explicitly flag a scope mismatch instead of claiming relevance. "
         "Answer in concise, professional markdown with clear section headings. "
         "When possible, include citations as links using fields already present in report_data (e.g., publication url, trial url)."
     )

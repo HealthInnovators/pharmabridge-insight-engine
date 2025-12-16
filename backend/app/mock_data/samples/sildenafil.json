@@ -1,0 +1,80 @@
+{
+  "publications": [
+    {
+      "title": "Sildenafil citrate: pharmacology and clinical applications",
+      "journal": "Clinical Pharmacokinetics",
+      "year": 2020,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sildenafil+citrate+pharmacology+clinical+applications"
+    },
+    {
+      "title": "Phosphodiesterase-5 inhibitors and pain modulation: rationale for repurposing in neuropathic pain",
+      "journal": "Pain Research Review",
+      "year": 2021,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=PDE5+inhibitor+neuropathic+pain"
+    }
+  ],
+  "trials": [
+    {
+      "nct_id": "NCT00000000",
+      "title": "Placeholder: Sildenafil in neuropathic pain (demo dataset)",
+      "status": "N/A",
+      "phase": "N/A",
+      "completion_date": "N/A",
+      "sponsor": "N/A",
+      "url": "https://clinicaltrials.gov/search?term=sildenafil%20neuropathic%20pain"
+    }
+  ],
+  "patents": [
+    {
+      "patent_number": "US0000000",
+      "title": "Placeholder: Sildenafil composition and use (demo dataset)",
+      "filing_date": "N/A",
+      "expiry": "N/A",
+      "status": "Demo",
+      "assignee": "N/A",
+      "abstract": "Demo placeholder to show patent section wiring.",
+      "claims": []
+    }
+  ],
+  "iqvia": {
+    "therapy_area": "Neuropathic Pain / Erectile Dysfunction / PAH (demo)",
+    "market_size": {},
+    "cagr": null,
+    "burden_index": null,
+    "competitors": [],
+    "trends": [
+      "Demo dataset: replace with real market intelligence source before production."
+    ]
+  },
+  "exim": {
+    "api_name": "Sildenafil API (demo)",
+    "import_dependency": null,
+    "trade_volumes": [],
+    "top_exporters": [],
+    "notes": "Demo dataset: replace with real EXIM source before production."
+  },
+  "internal_docs": [
+    {
+      "title": "Internal Memo – Sildenafil Repurposing Hypotheses (demo)",
+      "summary": "Concepts include NO/cGMP pathway relevance, neurovascular modulation, and safety considerations for chronic use.",
+      "url": "internal://strategy/sildenafil-repurposing-memo"
+    },
+    {
+      "title": "Briefing Note – PDE5 Inhibitors in Pain Indications (demo)",
+      "summary": "Summarizes rationale, preclinical signal types, and key evidence gaps for neuropathic pain.",
+      "url": "internal://briefing/pde5-pain"
+    }
+  ],
+  "web_intel": [
+    {
+      "source": "ClinicalTrials.gov Search",
+      "url": "https://clinicaltrials.gov/search?term=sildenafil",
+      "summary": "Use this link to validate live trial activity during demo."
+    },
+    {
+      "source": "PubMed Search",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/?term=sildenafil",
+      "summary": "Use this link to validate live publications during demo."
+    }
+  ]
+}

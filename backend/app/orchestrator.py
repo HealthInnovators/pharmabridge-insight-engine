@@ -24,23 +24,62 @@ class State(TypedDict, total=False):
     history: List[Dict[str, Any]]
 
 
+def _dedupe_preserve_order(items: List[str]) -> List[str]:
+    out: List[str] = []
+    seen = set()
+    for x in items:
+        if x in seen:
+            continue
+        out.append(x)
+        seen.add(x)
+    return out
+
+
+def _utcnow_iso() -> str:
+    return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+
+
 def plan(state: State) -> State:
     q = state["query"].lower()
     tasks: List[str] = []
-    if any(k in q for k in ["trial", "phase", "study", "nct", "pipeline"]):
-        tasks.append("trials")
-    if any(k in q for k in ["patent", "expiry", "fto", "ip", "biosimilar", "generic", "competition"]):
-        tasks.append("patent")
-    if any(k in q for k in ["market", "sales", "cagr", "iqvia", "market size", "therapy area"]):
-        tasks.append("iqvia")
-    if any(k in q for k in ["export", "import", "exim", "trade", "sourcing", "dependency"]):
-        tasks.append("exim")
-    if any(k in q for k in ["internal", "mins", "deck", "strategy", "upload", "pdf", "briefing"]):
-        tasks.append("internal_knowledge")
-    if any(k in q for k in ["web", "guideline", "news", "forum", "publication", "real-time", "real time", "web search"]):
-        tasks.append("web_intel")
-    # Always include web search summary for demo richness
-    tasks.insert(0, "web_search")
+
+    full_analysis = any(
+        k in q
+        for k in [
+            "repurpose",
+            "repurposing",
+            "complete analysis",
+            "business case",
+            "i need everything",
+            "we're evaluating",
+            "we are evaluating",
+            "we're considering",
+            "considering licensing",
+            "licensing",
+            "compare the market",
+        ]
+    )
+
+    if full_analysis:
+        tasks.extend(["web_search", "trials", "patent", "iqvia", "internal_knowledge", "web_intel"])
+    else:
+        if any(k in q for k in ["trial", "phase", "study", "nct", "pipeline"]):
+            tasks.append("trials")
+        if any(k in q for k in ["patent", "expiry", "fto", "ip", "biosimilar", "generic", "competition"]):
+            tasks.append("patent")
+        if any(k in q for k in ["market", "sales", "cagr", "iqvia", "market size", "therapy area"]):
+            tasks.append("iqvia")
+        if any(k in q for k in ["export", "import", "exim", "trade", "sourcing", "dependency"]):
+            tasks.append("exim")
+        if any(k in q for k in ["internal", "mins", "deck", "strategy", "upload", "pdf", "briefing"]):
+            tasks.append("internal_knowledge")
+        if any(k in q for k in ["web", "guideline", "news", "forum", "publication", "real-time", "real time", "web search"]):
+            tasks.append("web_intel")
+
+        # Always include web search summary for demo richness
+        tasks.insert(0, "web_search")
+
+    tasks = _dedupe_preserve_order(tasks)
 
     state["tasks"] = tasks
     state["i"] = 0
@@ -132,7 +171,30 @@ def aggregate(state: State) -> State:
     internal_docs = results.get("internal_knowledge", {}).get("internal_docs", [])
     web_items = results.get("web_intel", {}).get("web_intel", [])
 
-    lines: List[str] = [f"Query: {q}", "", "Findings:"]
+    sources = {
+        "publications": results.get("web_search", {}).get("_meta", {}),
+        "trials": results.get("trials", {}).get("_meta", {}),
+        "patents": results.get("patent", {}).get("_meta", {}),
+        "iqvia": results.get("iqvia", {}).get("_meta", {}),
+        "exim": results.get("exim", {}).get("_meta", {}),
+        "internal_docs": results.get("internal_knowledge", {}).get("_meta", {}),
+        "web_intel": results.get("web_intel", {}).get("_meta", {}),
+        "generated_at": _utcnow_iso(),
+    }
+
+    lines: List[str] = [f"Query: {q}", "", "Data Sources:"]
+    for k, meta in [
+        ("Publications", sources.get("publications")),
+        ("Clinical Trials", sources.get("trials")),
+        ("Patents", sources.get("patents")),
+        ("Market (IQVIA)", sources.get("iqvia")),
+        ("EXIM", sources.get("exim")),
+        ("Internal Knowledge", sources.get("internal_docs")),
+        ("Web Intelligence", sources.get("web_intel")),
+    ]:
+        if isinstance(meta, dict) and meta.get("source"):
+            lines.append(f"- {k}: {meta.get('source')}")
+    lines.extend(["", "Findings:"])
 
     if publications:
         lines.append("- Publications:")
@@ -238,6 +300,7 @@ def aggregate(state: State) -> State:
         "web_intel": web_items,
         "clarifications": clarifications,
         "insights": insights,
+        "sources": sources,
     }
     return state
 
